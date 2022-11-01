@@ -1,38 +1,43 @@
+
 //choices are bulbasaur charmander and squirtle
 
 let bulb = 'Bulbasaur',
     char = 'Charmander',
     squir = 'Squirtle';
+
+let computerChoice,
+    playerChoice;
 //get computer choice which the user and put it in a variable
 
 function getComputerChoice() {
     let rate = Math.floor(Math.random()*100) + 1;
-    let choice;
-    if (rate <= 33) {choice = bulb;
-    } else if (rate >= 67) {choice = char;
-    } else {choice = squir;}
-    return choice;
+    if (rate <= 33) {computerChoice = bulb;
+    } else if (rate >= 67) {computerChoice = char;
+    } else {computerChoice = squir;}
 }
 
-let computerChoice = getComputerChoice();
+
 
 //get user choice and input it in a variable
 
-const playerSelection = prompt('Choose your Pokemon! \n Bulbasaur, Charmander, or Squirtle?', '');
-let playerChoice;
+function pChoice() { 
+let pSelection = prompt('Choose your Pokemon! \n Bulbasaur, Charmander, or Squirtle?', '');
 
-    if(playerSelection == 'Squirtle') {
+    if(pSelection == 'Squirtle') {
         playerChoice = squir
-    } else if(playerSelection == 'Bulbasaur') {
+    } else if(pSelection == 'Bulbasaur') {
         playerChoice = bulb
-    } else if (playerSelection == 'Charmander') {
+    } else if (pSelection == 'Charmander') {
         playerChoice = char
-    } else {''};
+    } else {playerChoice = ''};
+}
+
 
 //variable for scoreboard
 
 let userScore = 0,
     computerScore = 0;
+    
 
 //compare user choice and computer choice
 //user choice:bulbasaur vs 
@@ -42,62 +47,94 @@ let userScore = 0,
 //user choice:squirlte vs 
 //computer choice:bulbasaur=loser || charmander=winner || squiretle=draw
 
+
 function playRound(playerChoice, computerChoice) {
-    console.log(playerChoice);
-    console.log(computerChoice);
-        switch (true) {
+       
+    switch (true) {
         case (playerChoice == bulb && computerChoice == bulb):
-          return ('It\'s a draw! We both chose Bulbasaur!');
+          return alert('It\'s a draw! We both chose Bulbasaur!');
             break;
         case (playerChoice == bulb && computerChoice == char):
             (computerScore++);
-           return ('Charmander, Use ember! You Lose!');
+           return alert('Charmander, Use ember! You Lose!');
             break;
         case (playerChoice == bulb && computerChoice == squir):
             (userScore++);
-           return ('Oh no! Bulbasaur used razor leaf! You Win!'); 
+           return alert('Oh no! Bulbasaur used razor leaf! You Win!'); 
             break;
         case (playerChoice == squir && computerChoice == squir):
-            return ('It\'s a draw! We both chose Suirtle!');
+            return alert('It\'s a draw! We both chose Suirtle!');
             break;
         case (playerChoice == squir && computerChoice == bulb):
             (computerScore++);
-            return ('Bulbasaur use razor leaf! You Lose!'); 
+            return alert('Bulbasaur use razor leaf! You Lose!'); 
             break;
         case (playerChoice == squir && computerChoice == char):
             (userScore++);
-            return ('Oh no! Squirtle used water gun! You Win!');
+            return alert('Oh no! Squirtle used water gun! You Win!');
             break;
         case (playerChoice == char && computerChoice == char):
-            return ('It\'s a draw! We both chose Charmander.');
+            return alert('It\'s a draw! We both chose Charmander.');
             break;
         case (playerChoice == char && computerChoice == squir):
             (computerScore++);
-            return ('Squirtle, use water gun! You Lose!.'); 
+            return alert('Squirtle, use water gun! You Lose!.'); 
             break;
         case (playerChoice == char && computerChoice == bulb):
             (userScore++);
-            return ('Oh no! Charmander used ember! You Win!');
+            return alert('Oh no! Charmander used ember! You Win!');
             break;
         default:
-            return ('Please select among the choices');
+            return alert('Please select among the choices');
             break;
     }
+    
 }
 
-alert(playRound(playerChoice, computerChoice));
-alert(playRound(playerChoice, computerChoice));
-alert(playRound(playerChoice, computerChoice));
-
-//show user scoreboard
-console.log(userScore)
-console.log(computerScore)
 
 //play 5 times, if user won the most, overall winner
 // if computer won the mose, overall loser
+if (confirm('Do you want to battle?' )) {
+    game();
+} else {alert('That\s sad...')};
+
+
+function game() {
+    for (let i = 0; i <= 4; i++) {
+       pChoice();
+       getComputerChoice();
+       playRound(playerChoice, computerChoice);
+
+//show user scoreboard
+        alert(`That\s ${userScore}, ${computerScore}`)
+       
+    } retry();
+    
+}
+
+
+
 
 //choice to reset game or close
+function retry() {
+    if (userScore == computerScore) {
+        if (confirm('Nice Battle! Do you want to clash again?')) {
+            userScore = 0, computerScore = 0, game();
+        }   else {alert('Ok then, I\'m going to train to get better!');}
+    } 
+    else if(userScore >= computerScore) {
+        if(confirm('Congratulation!!! \n Do you want to battle again?')) {
+            userScore = 0, computerScore = 0, game();
+        } else {alert('You should try for the Pokemon League!');}
+    } 
+    else if (userScore <= computerScore){ 
+         if(confirm('I Won! want to batlle again?')) {
+            userScore = 0, computerScore = 0, game();
+            } else {alert('Thanks for the battle! I\'m training for the Pokemon League!');}
+    } else {alert('that\'s sad...');}
+    
+}
 
-//Note: 
-//Prompt to start the game choose yes or no
-//Prompt to continue or cancel
+
+
+
