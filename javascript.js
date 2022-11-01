@@ -14,6 +14,7 @@ function getComputerChoice() {
     if (rate <= 33) {computerChoice = bulb;
     } else if (rate >= 67) {computerChoice = char;
     } else {computerChoice = squir;}
+    alert(`My Choice is ${computerChoice}`)
 }
 
 
