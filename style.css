@@ -1,0 +1,26 @@
+
+#selection{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 400px;
+    
+}
+
+img{
+    width: 100px;
+    height: auto;
+}
+
+.board {
+    display: flex;
+    justify-content: space-around
+
+}
+
+.scores {
+    border: 2px solid burlywood;
+    border-radius: 12px;
+    padding: 20px;
+
+}

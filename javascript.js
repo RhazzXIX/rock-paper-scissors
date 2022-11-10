@@ -1,5 +1,36 @@
+//variable for scoreboard
+
+let userScore = 0,
+    computerScore = 0;
+
+// element for score board
+const body = document.querySelector('body');
+const scoreBoard = document.createElement('div');
+const playerScore = document.createElement('div');
+const compScore = document.createElement('div');
+
+// add attribute for scoreboard
+
+scoreBoard.classList.add('board');
+playerScore.classList.add('scores');
+compScore.classList.add('scores');
+
+
+// append scoreboard into the html file
+
+scoreBoard.appendChild(playerScore);
+scoreBoard.appendChild(compScore);
+body.appendChild(scoreBoard);
+
+// show the score
+playerScore.textContent = `Player Score = ${userScore}`;
+compScore.textContent = `Computer Score = ${computerScore}`;
+
+
+
 
 //choices are bulbasaur charmander and squirtle
+
 
 let bulb = 'Bulbasaur',
     char = 'Charmander',
@@ -18,26 +49,54 @@ function getComputerChoice() {
 }
 
 
+//user selects by pressing the button
+const charmander = document.querySelector('.charmander');
+const squirtle = document.querySelector('.squirtle')
+const bulbasaur = document.querySelector('.bulbasaur');
 
-//get user choice and input it in a variable
+charmander.addEventListener('click', () => {
+    playerChoice = char;
+    getComputerChoice(); // runs the function to get computer choice.
+    playRound(playerChoice, computerChoice); // plays the game
+    playerScore.textContent = `Player Score = ${userScore}`;
+    compScore.textContent = `Computer Score = ${computerScore}`;
+});
 
-function pChoice() { 
-let pSelection = prompt('Choose your Pokemon! \n Bulbasaur, Charmander, or Squirtle?', '');
+squirtle.addEventListener('click', () => {
+    playerChoice = squir;
+    getComputerChoice(); // runs the function to get computer choice.
+    playRound(playerChoice, computerChoice); // plays the game
+    playerScore.textContent = `Player Score = ${userScore}`; // upddate the score Board
+    compScore.textContent = `Computer Score = ${computerScore}`;
+});
 
-    if(pSelection == 'Squirtle') {
-        playerChoice = squir
-    } else if(pSelection == 'Bulbasaur') {
-        playerChoice = bulb
-    } else if (pSelection == 'Charmander') {
-        playerChoice = char
-    } else {playerChoice = ''};
-}
+bulbasaur.addEventListener('click', () => {
+    playerChoice = bulb;
+    getComputerChoice(); // runs the function to get computer choice.
+    playRound(playerChoice, computerChoice); // plays the game
+    playerScore.textContent = `Player Score = ${userScore}`;
+    compScore.textContent = `Computer Score = ${computerScore}`;
+});
 
 
-//variable for scoreboard
 
-let userScore = 0,
-    computerScore = 0;
+
+//select user choice and input it in a variable
+
+//function pChoice() { 
+//let pSelection = prompt('Choose your Pokemon! \n Bulbasaur, Charmander, or Squirtle?', '');
+
+//    if(pSelection == 'Squirtle') {
+//        playerChoice = squir
+//    } else if(pSelection == 'Bulbasaur') {
+//        playerChoice = bulb
+//    } else if (pSelection == 'Charmander') {
+//        playerChoice = char
+//    } else {playerChoice = ''};
+//}
+
+
+
     
 
 //compare user choice and computer choice
@@ -94,10 +153,11 @@ function playRound(playerChoice, computerChoice) {
 
 
 //play 5 times, if user won the most, overall winner
-// if computer won the mose, overall loser
-if (confirm('Do you want to battle?' )) {
-    game();
-} else {alert('That\s sad...')};
+// if computer won the most, overall loser
+
+//if (confirm('Do you want to battle?' )) {
+//    game();
+//} else {alert('That\s sad...')};
 
 
 function game() {
