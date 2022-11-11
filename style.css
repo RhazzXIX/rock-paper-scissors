@@ -1,20 +1,74 @@
 
-#selection{
+h1 {
+    text-align: center;
+}
+body {
     display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Times New Roman', sans-serif;
+    row-gap: 18px;
+}
+
+#context {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid brown;
+    border-radius: 18px;
+    padding: 20px;
+    width: 400px;
+    margin: auto;
+    row-gap: 30px;
+    white-space: pre;
+    height: 206px;
+}
+
+.confirm {
+    display: flex;
+    justify-content: space-around;
+}
+
+.confirmbtn {
+    border-radius: 6px;
+    padding: 4px;
+}
+
+#game{
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     height: 400px;
+    row-gap: 18px;
     
 }
 
-img{
+#selection {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    min-width: 300px;
+}
+
+#selection button{
+    border-radius: 18px;
+}
+
+button:hover{
+    background-color: aquamarine;
+}
+
+#selection img{
     width: 100px;
     height: auto;
 }
 
+
 .board {
     display: flex;
-    justify-content: space-around
+    justify-content: space-around;
+    width: 100%;
 
 }
 
@@ -23,4 +77,24 @@ img{
     border-radius: 12px;
     padding: 20px;
 
+}
+
+#footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+#footer a {
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    background-color: aquamarine;
+    padding: 3px;
+}
+
+#footer a:hover{
+    color: aquamarine;
+    background-color: white;
+    border: 1px solid aquamarine;
 }
