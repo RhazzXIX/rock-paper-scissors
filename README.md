@@ -1,4 +1,4 @@
 # rock-paper-scissors
-TOP first java project
+Fundamentals Project No.3
 
 Live Demo: https://rhazzxix.github.io/rock-paper-scissors/

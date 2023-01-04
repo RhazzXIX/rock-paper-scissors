@@ -1,8 +1,9 @@
 //variable for scoreboard
 
 let userScore = 0,
-  computerScore = 0;
-(rounds = 1), (i = 0);
+  computerScore = 0,
+  rounds = 1,
+  i = 0;
 
 // context
 const context = document.querySelector("div#context");
@@ -60,13 +61,16 @@ let computerChoice, playerChoice;
 //get computer choice which the user and put it in a variable
 function getComputerChoice() {
   let rate = Math.floor(Math.random() * 3);
-  console.log(rate);
-  if (rate === 0) {
-    computerChoice = bulb;
-  } else if (rate === 2) {
-    computerChoice = char;
-  } else {
-    computerChoice = squir;
+  switch (rate) {
+    case 1:
+      computerChoice = bulb;
+      break;
+    case 2:
+      computerChoice = char;
+      break;
+    default:
+      computerChoice = squir;
+      break;
   }
   instructor.textContent = `My Choice is ${computerChoice}\r\n`;
 }
@@ -199,13 +203,13 @@ function win() {
     rounds++;
     i++;
     round.textContent = `Round ${rounds}`;
-  } else if (rounds == 5) {
+  } else if (rounds === 5) {
     context.appendChild(confirm);
     confirm.appendChild(yesbtn);
     confirm.appendChild(nobtn);
     i++;
 
-    if (userScore == computerScore) {
+    if (userScore === computerScore) {
       instructor.textContent +=
         "\r\n \r\nNice Battle! \nDo you want to clash again?";
     } else if (userScore >= computerScore) {
@@ -239,7 +243,7 @@ nobtn.addEventListener("click", () => {
   if (i < 6) {
     i++;
   }
-  if (userScore == computerScore) {
+  if (userScore === computerScore) {
     instructor.textContent = "Ok then, I'm going to train to get better!";
   } else if (userScore >= computerScore) {
     instructor.textContent = "You should try for the Pokemon League!";
